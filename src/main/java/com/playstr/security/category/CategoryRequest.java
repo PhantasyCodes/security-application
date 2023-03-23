@@ -1,5 +1,4 @@
-package com.playstr.security.auth;
-
+package com.playstr.security.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
-    private String token;
-    private String firstname;
-    private String profilepic;
+public class CategoryRequest {
+    private String name;
+    private String description;
+
 }
