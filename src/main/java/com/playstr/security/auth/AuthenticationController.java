@@ -1,8 +1,9 @@
 package com.playstr.security.auth;
 
-import lombok.Data;
+import com.playstr.security.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
 
     private final AuthenticationService service;
+    private final JwtService jwtService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
@@ -20,13 +22,13 @@ public class AuthenticationController {
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-        System.out.println("Nice it");
         return ResponseEntity.ok(service.authenticate(request));
-
     }
 
-    @GetMapping("/author")
-    public ResponseEntity<String> sayHello() {
-        return ResponseEntity.ok("Hello from secured endpoint");
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PostMapping("/check")
+    public ResponseEntity<Boolean> check(@RequestBody JwtRequest jwtRequest) {
+        return ResponseEntity.ok(jwtService.isTokenExpired(jwtRequest.getToken()));
     }
+
 }
