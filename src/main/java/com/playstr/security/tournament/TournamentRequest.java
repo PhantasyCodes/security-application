@@ -1,6 +1,5 @@
-package com.playstr.security.item;
+package com.playstr.security.tournament;
 
-import com.playstr.security.category.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemRequest {
+public class TournamentRequest {
     private String name;
     private String description;
-    private String url;
-    private String price;
-    private Integer categoryId;
+    private String tournamentUrl;
+    private String gameUrl;
 }

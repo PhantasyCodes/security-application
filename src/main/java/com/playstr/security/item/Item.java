@@ -17,14 +17,13 @@ public class Item {
     @GeneratedValue
     private Integer id;
     private String name;
+    private String url;
+    private String price;
     private String  description;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
 }

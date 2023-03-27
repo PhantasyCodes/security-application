@@ -18,8 +18,23 @@ public class ItemService {
         var item = Item.builder()
                 .name(itemRequest.getName())
                 .description(itemRequest.getDescription())
+                .url(itemRequest.getUrl())
+                .price(itemRequest.getPrice())
                 .build();
         itemRepository.save(item);
         return item;
+    }
+
+    public List<Item> createItems(ItemListRequest itemListRequest) {
+        for (ItemRequest itemRequest: itemListRequest.getItems()) {
+            var item = Item.builder()
+                    .name(itemRequest.getName())
+                    .description(itemRequest.getDescription())
+                    .url(itemRequest.getUrl())
+                    .price(itemRequest.getPrice())
+                    .build();
+            itemRepository.save(item);
+        }
+        return getItems();
     }
 }
