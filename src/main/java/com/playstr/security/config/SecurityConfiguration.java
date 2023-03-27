@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**")
                 .permitAll()
-                .requestMatchers("/api/v1/items/all-tournaments")
+                .requestMatchers("/api/v1/items/all-items")
                 .permitAll()
                 .requestMatchers("/api/v1/tournaments/all-tournaments")
                 .permitAll()
