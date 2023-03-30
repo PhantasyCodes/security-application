@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 public class AuthenticationResponse {
     private String token;
     private String firstname;
-    private String profilepic;
+    private byte[] profilePic;
 }
