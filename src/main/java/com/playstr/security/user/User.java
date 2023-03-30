@@ -28,6 +28,7 @@ public class User implements UserDetails {
     private String password;
 
     @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] profilePic;
 
     @Enumerated(EnumType.STRING)

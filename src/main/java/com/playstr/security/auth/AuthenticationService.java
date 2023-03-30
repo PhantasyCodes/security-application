@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -20,19 +21,19 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(String firstName, String lastName, String email, String password, MultipartFile profilePic) {
         byte[] bytes = null;
         try {
-            bytes = request.getProfilePic().getBytes();
+            bytes = profilePic.getBytes();
         } catch (IOException e) {
             ;
         }
         var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
+                .firstname(firstName)
+                .lastname(lastName)
+                .email(email)
                 .profilePic(bytes)
-                .password(passwordEncoder.encode(request.getPassword()))
+                .password(passwordEncoder.encode(password))
                 .role(Role.USER)
                 .build();
         repository.save(user);

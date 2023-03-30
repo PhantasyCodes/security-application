@@ -6,20 +6,24 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class AuthenticationController {
 
     private final AuthenticationService service;
     private final JwtService jwtService;
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "multipart/form-data", "Content-Type" })
     @PostMapping(value="/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(service.register(request));
+    public ResponseEntity<AuthenticationResponse> register(@RequestParam("firstName") String firstName,
+                                                           @RequestParam("lastName") String lastName,
+                                                           @RequestParam("email") String email,
+                                                           @RequestParam("password") String password,
+                                                           @RequestParam("profilePic") MultipartFile profilePic) {
+        return ResponseEntity.ok(service.register(firstName, lastName, email, password, profilePic));
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
