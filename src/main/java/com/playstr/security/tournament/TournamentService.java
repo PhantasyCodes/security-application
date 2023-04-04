@@ -26,6 +26,7 @@ public class TournamentService {
                 .description(tournamentRequest.getDescription())
                 .tournamentUrl(tournamentRequest.getTournamentUrl())
                 .gameUrl(tournamentRequest.getGameUrl())
+                .game(tournamentRequest.getGame())
                 .build();
         tournamentRepository.save(tournament);
         return tournament;
@@ -38,6 +39,7 @@ public class TournamentService {
                     .description(tournamentRequest.getDescription())
                     .tournamentUrl(tournamentRequest.getTournamentUrl())
                     .gameUrl(tournamentRequest.getGameUrl())
+                    .game(tournamentRequest.getGame())
                     .build();
             tournamentRepository.save(tournament);
         }

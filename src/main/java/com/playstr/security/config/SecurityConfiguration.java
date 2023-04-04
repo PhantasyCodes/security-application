@@ -31,6 +31,8 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("/api/v1/items/all-items")
                 .permitAll()
+                .requestMatchers("/api/v1/tournaments/**")
+                .permitAll()
                 .requestMatchers("/api/v1/tournaments/all-tournaments")
                 .permitAll()
                 .requestMatchers("api/v1/tournaments/{id}")

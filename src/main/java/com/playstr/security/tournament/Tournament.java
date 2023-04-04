@@ -21,6 +21,7 @@ public class Tournament {
     private String name;
     private String tournamentUrl;
     private String gameUrl;
+    private String game;
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 }

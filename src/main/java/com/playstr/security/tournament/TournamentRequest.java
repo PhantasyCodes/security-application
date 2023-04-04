@@ -14,4 +14,5 @@ public class TournamentRequest {
     private String description;
     private String tournamentUrl;
     private String gameUrl;
+    private String game;
 }
