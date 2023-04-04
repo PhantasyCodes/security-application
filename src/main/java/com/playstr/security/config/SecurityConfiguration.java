@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
 @EnableWebSecurity
@@ -20,6 +21,7 @@ public class SecurityConfiguration {
 
 
     @Bean
+    @CrossOrigin(origins = "http://localhost:5173")
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
@@ -30,6 +32,8 @@ public class SecurityConfiguration {
                 .requestMatchers("/api/v1/items/all-items")
                 .permitAll()
                 .requestMatchers("/api/v1/tournaments/all-tournaments")
+                .permitAll()
+                .requestMatchers("api/v1/tournaments/{id}")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

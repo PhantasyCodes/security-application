@@ -1,9 +1,11 @@
 package com.playstr.security.tournament;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -12,6 +14,10 @@ public class TournamentService {
 
     public List<Tournament> getTournaments() {
         return tournamentRepository.findAll();
+    }
+
+    public Optional<Tournament> getTournament(Integer id) {
+        return tournamentRepository.findById(id);
     }
 
     public Tournament createTournament(TournamentRequest tournamentRequest) {

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/tournaments")
@@ -18,7 +19,11 @@ public class TournamentController {
         return tournamentService.getTournaments();
     }
 
-
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("/{id}")
+    public Optional<Tournament> getTournament(@PathVariable Integer id) {
+        return tournamentService.getTournament(id);
+    }
 
     @PostMapping
     public ResponseEntity<Tournament> createTournament(@RequestBody TournamentRequest tournamentRequest) {
