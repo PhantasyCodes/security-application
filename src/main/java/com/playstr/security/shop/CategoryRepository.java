@@ -1,4 +1,4 @@
-package com.playstr.security.category;
+package com.playstr.security.shop;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

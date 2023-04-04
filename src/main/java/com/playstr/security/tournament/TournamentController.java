@@ -18,6 +18,8 @@ public class TournamentController {
         return tournamentService.getTournaments();
     }
 
+
+
     @PostMapping
     public ResponseEntity<Tournament> createTournament(@RequestBody TournamentRequest tournamentRequest) {
         return ResponseEntity.ok(tournamentService.createTournament(tournamentRequest));

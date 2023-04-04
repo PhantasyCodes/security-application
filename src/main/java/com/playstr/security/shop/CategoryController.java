@@ -1,4 +1,4 @@
-package com.playstr.security.category;
+package com.playstr.security.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

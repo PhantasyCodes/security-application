@@ -1,8 +1,8 @@
-package com.playstr.security.category;
+package com.playstr.security.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.playstr.security.category.Category;
+import com.playstr.security.shop.Category;
 
 @Service
 @RequiredArgsConstructor

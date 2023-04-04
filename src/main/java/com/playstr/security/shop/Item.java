@@ -1,6 +1,5 @@
-package com.playstr.security.item;
+package com.playstr.security.shop;
 
-import com.playstr.security.category.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
