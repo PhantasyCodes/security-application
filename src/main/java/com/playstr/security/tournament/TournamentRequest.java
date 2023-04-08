@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TournamentRequest {
     private String name;
-    private String description;
-    private String tournamentUrl;
-    private String gameUrl;
+    private byte[] tournamentPic;
     private String game;
+    private String date;
+    private Integer price;
+    private String description;
 }

@@ -1,9 +1,6 @@
 package com.playstr.security.tournament;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +16,9 @@ public class Tournament {
     @GeneratedValue
     private Integer id;
     private String name;
-    private String tournamentPic;
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private byte[] tournamentPic;
     private String game;
     private String date;
     private Integer price;

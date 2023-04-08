@@ -1,8 +1,10 @@
 package com.playstr.security.tournament;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,13 +27,19 @@ public class TournamentController {
         return tournamentService.getTournament(id);
     }
 
-    @PostMapping
-    public ResponseEntity<Tournament> createTournament(@RequestBody TournamentRequest tournamentRequest) {
-        return ResponseEntity.ok(tournamentService.createTournament(tournamentRequest));
+    @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "multipart/form-data", "Content-Type" })
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Tournament> createTournament(@RequestParam("name") String name,
+                                                       @RequestParam("game") String game,
+                                                       @RequestParam("price") Integer price,
+                                                       @RequestParam("date") String date,
+                                                       @RequestParam("description") String description,
+                                                       @RequestParam("tournamentPic")MultipartFile tournamentPic) {
+        return ResponseEntity.ok(tournamentService.createTournament(name, game, price, date, description, tournamentPic));
     }
 
-    @PostMapping("/tournament-list")
-    public ResponseEntity<List<Tournament>> createTournaments(@RequestBody TournamentListRequest tournamentListRequest) {
-        return ResponseEntity.ok(tournamentService.createTournaments(tournamentListRequest));
-    }
+//    @PostMapping("/tournament-list")
+//    public ResponseEntity<List<Tournament>> createTournaments(@RequestBody TournamentListRequest tournamentListRequest) {
+//        return ResponseEntity.ok(tournamentService.createTournaments(tournamentListRequest));
+//    }
 }
