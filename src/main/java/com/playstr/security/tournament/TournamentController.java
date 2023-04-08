@@ -28,7 +28,7 @@ public class TournamentController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "multipart/form-data", "Content-Type" })
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value="/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Tournament> createTournament(@RequestParam("name") String name,
                                                        @RequestParam("game") String game,
                                                        @RequestParam("price") Integer price,
