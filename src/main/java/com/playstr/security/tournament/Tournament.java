@@ -19,9 +19,10 @@ public class Tournament {
     @GeneratedValue
     private Integer id;
     private String name;
-    private String tournamentUrl;
-    private String gameUrl;
+    private String tournamentPic;
     private String game;
+    private String date;
+    private Integer price;
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 }
