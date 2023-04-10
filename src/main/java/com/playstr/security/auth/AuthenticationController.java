@@ -17,7 +17,7 @@ public class AuthenticationController {
     private final JwtService jwtService;
 
     @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "multipart/form-data", "Content-Type" })
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value="/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<AuthenticationResponse> register(@RequestParam("firstName") String firstName,
                                                            @RequestParam("lastName") String lastName,
                                                            @RequestParam("email") String email,
